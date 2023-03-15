@@ -6,11 +6,13 @@ import com.movie.entity.Movie;
 import com.movie.entity.MovieSummary;
 import com.movie.wrapper.EntityList;
 
+import java.util.List;
+
 public interface MovieInfoService {
 
     MovieSummary getMovieInfoById(Integer movieId);
 
-    Movie searchMovieByName(String movieName);
+    EntityList<Movie> searchMovieByName(String movieName);
 
     Celebrity searchByCelebrityName(String celebrityName);
 

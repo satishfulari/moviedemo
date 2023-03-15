@@ -21,8 +21,8 @@ public class MovieInfoServiceImpl implements MovieInfoService {
     private RestTemplate restTemplate;
 
     @Override
-    public Movie searchMovieByName(String movieName) {
-        return restTemplate.getForObject(String.format("https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=false&query=%s", apiKey, movieName), Movie.class);
+    public EntityList<Movie> searchMovieByName(String movieName) {
+        return restTemplate.getForObject(String.format("https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=false&query=%s", apiKey, movieName), EntityList.class);
     }
 
     @Override

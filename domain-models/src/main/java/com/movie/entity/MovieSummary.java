@@ -11,4 +11,5 @@ public class MovieSummary extends BaseDetails{
 
     private List<String> genreIds;
     private List<String> cast;
+    private Integer releaseYear;
 }

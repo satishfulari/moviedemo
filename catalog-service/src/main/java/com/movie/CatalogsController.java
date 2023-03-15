@@ -33,7 +33,7 @@ public class CatalogsController {
 //    }
 
     @RequestMapping("/searchMovie")
-    public MovieSummary getCatalog(@RequestParam("name") String name) {
+    public List<MovieSummary> getCatalog(@RequestParam("name") String name) {
         return movieInfo.getMovieInfo(Movie.builder().name(name).build());
     }
 

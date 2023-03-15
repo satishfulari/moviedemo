@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/entertainment")
 public class MovieSummaryController {
@@ -20,9 +23,12 @@ public class MovieSummaryController {
     private MovieInfoService movieService;
 
     @GetMapping("/movieInfo")
-    public MovieSummary getMovieInfoByName(@RequestParam("movieName") String movieName) {
-        Movie movie = movieService.searchMovieByName(movieName);
-        MovieSummary movieSummary = movieService.getMovieInfoById(movie.getId());
+    public List<MovieSummary> getMovieInfoByName(@RequestParam("movieName") String movieName) {
+        EntityList<Movie> movieList = movieService.searchMovieByName(movieName);
+        List<MovieSummary> movieSummary = new ArrayList<>();
+        movieList.getObjectList().forEach(movie ->
+                movieSummary.add(movieService.getMovieInfoById(movie.getId())));
+
         return movieSummary;
     }
 
